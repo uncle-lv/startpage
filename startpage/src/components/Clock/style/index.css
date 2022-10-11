@@ -1,0 +1,17 @@
+.clock-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 280px;
+    min-height: 120px;
+}
+
+.clock {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+	font-size: 64px;
+	white-space: nowrap;
+	text-align: center;
+	text-shadow: 2px 2px rgba(10, 10, 10, 0.1);
+    font-family: "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+}
