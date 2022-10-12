@@ -1,7 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { DockMenu } from './components/DockMenu'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import './App.css';
+import { Clock } from './components/Clock';
+import { SearchBox } from './components/SearchBox';
+import { DockMenu } from './components/DockMenu';
 
 
 function App() {
@@ -9,7 +11,13 @@ function App() {
 
   return (
     <div className="App">
-      <DockMenu></DockMenu>
+      <div className='content'>
+        <Clock></Clock>
+        <SearchBox></SearchBox>
+      </div>
+      <div className='footer'>
+        <DockMenu items={[]}></DockMenu>
+      </div>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
