@@ -1,8 +1,5 @@
 import React from 'react';
 import './style/index.css';
-import gitlabIcon from './style/icon/gitlab.svg';
-import githubIcon from './style/icon/github.svg';
-import gmailIcon from './style/icon/gmail.svg';
 
 
 const DockItem = function(props) {
@@ -20,13 +17,12 @@ const DockItem = function(props) {
 
 
 const DockMenu = function(props) {
-    const { itemList } = props;
+    const { items } = props;
 
     return (
         <div className='dock-wrapper'>
             {
-                itemList.map(item => {
-                    console.log(item);
+                items.map(item => {
                     return (
                         <DockItem
                             key={item.id}
