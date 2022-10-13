@@ -33,3 +33,14 @@
     height: 40px;
     background-size: cover;
 }
+
+.tippy-box[data-theme~='blur'] {
+    margin-top: 12px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    font-family: "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+}

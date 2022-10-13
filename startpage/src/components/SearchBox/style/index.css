@@ -49,3 +49,24 @@
 .search-box input[type="text"]:focus {
     outline: none;
 }
+
+.tippy-box[data-theme~='blur'] {
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.engine-select-wrapper {
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    min-height: 30px;
+}
+
+.engine-icon {
+    width: 30px;
+    cursor: pointer;
+}
