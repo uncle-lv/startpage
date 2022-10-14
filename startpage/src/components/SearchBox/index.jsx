@@ -86,7 +86,7 @@ const SearchBox = function(props) {
                     content={
                         <EngineSelect
                             options={options}
-                            onSwitch={(option) => { switchEngine(option); }}>
+                            onSwitch={switchEngine}>
                         </EngineSelect>}
                     allowHTML={true} interactive={true}
                     trigger='click' placement='bottom'

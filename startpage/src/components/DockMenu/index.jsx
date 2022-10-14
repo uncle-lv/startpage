@@ -10,13 +10,20 @@ import { useState } from 'react';
 
 
 const DockItem = function(props) {
-    const { item } = props;
+    const { option, activeOpt, activeOptChange } = props;
+
+    const isActive = () => {
+        return option.id === activeOpt;
+    }
 
     return (
-        <Tippy content={item.name} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
-            <div className='dock-item' onClick={() => { item.callback(item); }}>
+        <Tippy content={option.name} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
+            <div
+                className={isActive ? 'dock-item-active' : 'dock-item'}
+                onClick={(e) => { activeOptChange(option); }}
+            >
                 <div className='item-icon' style={{
-                    backgroundImage: `url(${item.icon})`
+                    backgroundImage: `url(${option.icon})`
                 }}>
                 </div>
             </div>
@@ -26,7 +33,17 @@ const DockItem = function(props) {
 
 
 const DockMenu = function(props) {
-    const {  } = props;
+    const { options } = props;
+
+    const [activeOpt, setActiveOpt] = useState('');
+
+    const activeOptChange = (option) => {
+        if (activeOpt === option.id) {
+            setActiveOpt('');
+            return;
+        }
+        setActiveOpt(option.id);
+    }
 
     let items = [
         {
@@ -56,7 +73,9 @@ const DockMenu = function(props) {
                     return (
                         <DockItem
                             key={item.id}
-                            item={item}
+                            option={item}
+                            activeOpt={activeOpt}
+                            activeOptChange={activeOptChange}
                         />
                     )
                 })

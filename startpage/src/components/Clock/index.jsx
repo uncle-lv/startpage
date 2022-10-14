@@ -4,14 +4,15 @@ import { useState } from 'react';
 import './style/index.css'
 
 
-const Clock = function(props) {
+const getNowTime = () => {
+    const date = new Date();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    return `${hour < 10 ? '0' + hour : hour}:${minute < 10 ? '0' + minute : minute}`;
+};
 
-    const getNowTime = () => {
-        const date = new Date();
-        const hour = date.getHours();
-        const minute = date.getMinutes();
-        return `${hour < 10 ? '0' + hour : hour}:${minute < 10 ? '0' + minute : minute}`;
-    };
+
+const Clock = function(props) {
 
     const [ now, setNow ] = useState(getNowTime());
 
