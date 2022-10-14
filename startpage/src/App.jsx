@@ -4,6 +4,7 @@ import './App.css';
 import { Clock } from './components/Clock';
 import { SearchBox } from './components/SearchBox';
 import { DockMenu } from './components/DockMenu';
+import { Overlay } from './components/Overlay';
 
 
 function App() {
@@ -11,13 +12,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className='content'>
+      <Overlay>
+        <p>This is a overlay</p>
+      </Overlay>
+      {/* <div className='content'>
         <Clock></Clock>
         <SearchBox></SearchBox>
       </div>
       <div className='footer'>
         <DockMenu items={[]}></DockMenu>
-      </div>
+      </div> */}
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
