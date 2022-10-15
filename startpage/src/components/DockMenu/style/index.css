@@ -19,7 +19,6 @@
     width: 50px;
     height: 50px;
     border-radius: 8px;
-    z-index: 10;
     transition: all 0.2s;
 }
 
@@ -56,4 +55,12 @@
     border-radius: 8px;
     backdrop-filter: blur(10px);
     font-family: "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+}
+
+.divider {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    height: 30px;
+    margin: 0 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }

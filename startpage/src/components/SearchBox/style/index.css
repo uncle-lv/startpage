@@ -24,9 +24,17 @@
 }
 
 .prefix-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     float: left;
     width: 50px;
     cursor: pointer;
+}
+
+.prefix-icon img {
+    display: inline-block;
+    width: 24px;
 }
 
 .suffix-icon {
@@ -67,6 +75,8 @@
 }
 
 .engine-icon {
-    width: 30px;
+    display: inline-block;
+    width: 20px;
+    margin: 0 6px;
     cursor: pointer;
 }

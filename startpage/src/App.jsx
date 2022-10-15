@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
+import { searchEngines, dockItems } from './config';
 import { Clock } from './components/Clock';
 import { SearchBox } from './components/SearchBox';
 import { DockMenu } from './components/DockMenu';
@@ -12,16 +13,16 @@ function App() {
 
   return (
     <div className="App">
-      <Overlay>
-        <p>This is a overlay</p>
-      </Overlay>
-      {/* <div className='content'>
+      {/* <Overlay>
+        <p></p>
+      </Overlay> */}
+      <div className='content'>
         <Clock></Clock>
-        <SearchBox></SearchBox>
+        <SearchBox options={searchEngines}></SearchBox>
       </div>
       <div className='footer'>
-        <DockMenu items={[]}></DockMenu>
-      </div> */}
+        <DockMenu options={dockItems}></DockMenu>
+      </div>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />

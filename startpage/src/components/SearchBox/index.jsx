@@ -1,12 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale-extreme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { faGoogle, faBilibili, faPython } from '@fortawesome/free-brands-svg-icons';
 import './style/index.css';
-import { useState } from 'react';
 
 
 const EngineSelect = function(props) {
@@ -21,13 +20,13 @@ const EngineSelect = function(props) {
             {
                 options.map(option => {
                     return (
-                        <FontAwesomeIcon
+                        <img
                             key={option.id}
                             className='engine-icon'
-                            icon={option.icon}
+                            src={option.icon}
                             onClick={(e) => { selectEngine(option); }}
                         >
-                        </FontAwesomeIcon>
+                        </img>
                     )
                 })
             }
@@ -37,25 +36,7 @@ const EngineSelect = function(props) {
 
 
 const SearchBox = function(props) {
-    const {  } = props;
-
-    let options = [
-        {
-            id: 'python',
-            icon: faPython,
-            href: 'https://www.bing.com/search?q='
-        },
-        {
-            id: 'google',
-            icon: faGoogle,
-            href: 'https://www.google.com/search?q='
-        },
-        {
-            id: 'bilibili',
-            icon: faBilibili,
-            href: 'https://search.bilibili.com/all?keyword='
-        },
-    ];
+    const { options } = props;
 
     const [selectedEngine, setSelectedEngine] = useState(options[0]);
 
@@ -94,7 +75,7 @@ const SearchBox = function(props) {
                     theme='blur'
                     animation='scale-extreme'>
                     <div className='prefix-icon'>
-                        <FontAwesomeIcon icon={selectedEngine.icon}></FontAwesomeIcon>
+                        <img src={selectedEngine.icon}></img>
                     </div>
                 </Tippy>
                 <input
