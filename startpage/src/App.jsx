@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 import { searchEngines, dockItems } from './config';
 import { Clock } from './components/Clock';
 import { SearchBox } from './components/SearchBox';
@@ -16,6 +17,7 @@ function App() {
       {/* <Overlay>
         <p></p>
       </Overlay> */}
+      <Toaster></Toaster>
       <div className='content'>
         <Clock></Clock>
         <SearchBox options={searchEngines}></SearchBox>

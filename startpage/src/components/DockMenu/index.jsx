@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
+import toast from 'react-hot-toast';
 import { spaceInfo } from '../../util/api';
 import { liveRoomLink } from '../../config/constant';
 import './style/index.css';
@@ -49,8 +50,22 @@ const LiveRoom = function (props) {
             mode: 'no-cors'
         })
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
+            .then(response => {
+                let statusCode = response.data.live_room.liveStatus;
+                if (statusCode !== liveStatus) {
+                    setLiveStatus(statusCode);
+                    if (statusCode === 1) {
+                        toast('爱哥开播啦！', {
+                            icon: '🎉'
+                        })
+                    }
+
+                    if (statusCode === 0) {
+                        toast('爱哥下播啦！', {
+                            icon: '😭'
+                        })
+                    }
+                }
             })
             .catch(err => {
                 console.log(err);
@@ -59,20 +74,26 @@ const LiveRoom = function (props) {
 
     useEffect(() => {
         updateLiveStatus();
+        let ticker = setInterval(updateLiveStatus, 30000);
+        return function() {
+            clearInterval(ticker);
+        }
     }, [])
 
     return (
-        <Tippy content={isLive() ? '正在直播' : '未开播'} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
-            <div className='dock-item' onClick={(e) => { window.open(liveRoomLink); }}>
-                <div className='item-icon' style={{
-                    backgroundImage: `url(${eggAvatar})`,
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                    borderRadius: '8px',
-                    position: 'relative',
-                }}>
+        <>
+            <Tippy content={isLive() ? '正在直播' : '未开播'} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
+                <div className='dock-item' onClick={(e) => { window.open(liveRoomLink); }}>
+                    <div className='item-icon' style={{
+                        backgroundImage: `url(${eggAvatar})`,
+                        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        borderRadius: '8px',
+                        position: 'relative',
+                    }}>
+                    </div>
                 </div>
-            </div>
-        </Tippy>
+            </Tippy>
+        </>
     )
 }
 
