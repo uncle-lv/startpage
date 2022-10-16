@@ -1,8 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
+import { spaceInfo } from '../../util/api';
+import { liveRoomLink } from '../../config/constant';
 import './style/index.css';
 import eggAvatar from '../../assets/icon/egg.svg';
 
@@ -21,7 +23,7 @@ const DockItem = function (props) {
                 onClick={(e) => { activeOptChange(option); }}
             >
                 <div className='item-icon' style={{
-                    backgroundImage: `url(${option.icon})`
+                    backgroundImage: `url(${option.icon})`,
                 }}>
                 </div>
             </div>
@@ -41,13 +43,32 @@ const LiveRoom = function (props) {
         return true;
     }
 
+    const updateLiveStatus = () => {
+        fetch(`/bili/${spaceInfo}`, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        updateLiveStatus();
+    }, [])
+
     return (
         <Tippy content={isLive() ? '正在直播' : '未开播'} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
-            <div className='dock-item'>
+            <div className='dock-item' onClick={(e) => { window.open(liveRoomLink); }}>
                 <div className='item-icon' style={{
                     backgroundImage: `url(${eggAvatar})`,
                     backgroundColor: 'rgba(255, 255, 255, 0.5)',
                     borderRadius: '8px',
+                    position: 'relative',
                 }}>
                 </div>
             </div>
