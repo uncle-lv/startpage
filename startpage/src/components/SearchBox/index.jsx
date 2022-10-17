@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale-extreme.css';
@@ -13,7 +14,7 @@ const EngineSelect = function(props) {
 
     const selectEngine = (option) => {
         onSwitch(option);
-    }
+    };
 
     return (
         <div className='engine-select-wrapper'>
@@ -32,7 +33,7 @@ const EngineSelect = function(props) {
             }
         </div>
     )
-} 
+};
 
 
 const SearchBox = function(props) {
@@ -50,7 +51,7 @@ const SearchBox = function(props) {
 
     const keywordChange = (e) => {
         setKeyword(e.target.value);
-    }
+    };
 
     const search = (keyword) => {
         if (keyword === '') {
@@ -58,7 +59,7 @@ const SearchBox = function(props) {
           }
     
         window.open(selectedEngine.href+keyword);
-    }
+    };
 
     return (
         <div className='search-box-wrapper'>
@@ -95,6 +96,16 @@ const SearchBox = function(props) {
             </div>
         </div>
     )
-}
+};
+
+SearchBox.propTypes = {
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired,
+            href: PropTypes.string.isRequired,
+        })).isRequired,
+};
 
 export { SearchBox };

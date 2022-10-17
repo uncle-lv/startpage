@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
@@ -10,12 +11,12 @@ import './style/index.css';
 import eggAvatar from '../../assets/icon/egg.svg';
 
 
-const DockItem = function (props) {
+const DockItem = function(props) {
     const { option, activeOpt, activeOptChange } = props;
 
     const isActive = () => {
         return option.id === activeOpt;
-    }
+    };
 
     return (
         <Tippy content={option.name} placement='bottom' arrow={false} delay={[500, null]} animation='shift-away' theme='blur'>
@@ -32,7 +33,18 @@ const DockItem = function (props) {
     )
 };
 
-const LiveRoom = function (props) {
+DockItem.propTypes = {
+    option: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired,
+    }).isRequired,
+    activeOpt: PropTypes.string.isRequired,
+    activeOptChange: PropTypes.func.isRequired,
+};
+
+const LiveRoom = function(props) {
     const { } = props;
 
     const [liveStatus, setLiveStatus] = useState(0);
@@ -42,7 +54,7 @@ const LiveRoom = function (props) {
             return false;
         }
         return true;
-    }
+    };
 
     const updateLiveStatus = () => {
         fetch(`/bili/${spaceInfo}`, {
@@ -70,15 +82,15 @@ const LiveRoom = function (props) {
             .catch(err => {
                 console.log(err);
             })
-    }
+    };
 
     useEffect(() => {
         updateLiveStatus();
         let ticker = setInterval(updateLiveStatus, 30000);
-        return function() {
+        return function () {
             clearInterval(ticker);
         }
-    }, [])
+    }, []);
 
     return (
         <>
@@ -99,7 +111,7 @@ const LiveRoom = function (props) {
 }
 
 
-const DockMenu = function (props) {
+const DockMenu = function(props) {
     const { options } = props;
 
     const [activeOpt, setActiveOpt] = useState('');
@@ -130,6 +142,16 @@ const DockMenu = function (props) {
             <LiveRoom></LiveRoom>
         </div>
     )
+};
+
+DockMenu.propTypes = {
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired,
+            callback: PropTypes.func.isRequired,
+        })).isRequired,
 }
 
 export { DockMenu };
