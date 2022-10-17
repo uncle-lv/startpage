@@ -90,6 +90,7 @@ const LiveRoom = function (props) {
                         borderRadius: '8px',
                         position: 'relative',
                     }}>
+                        <div className={isLive() ? 'status-on' : 'status-off'}></div>
                     </div>
                 </div>
             </Tippy>

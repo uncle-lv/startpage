@@ -64,3 +64,23 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
+
+.status-on {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: rgba(46, 204, 113, 1);
+}
+
+.status-off {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: rgba(192, 57, 43, 1);
+}
