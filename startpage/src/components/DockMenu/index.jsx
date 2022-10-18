@@ -38,7 +38,7 @@ DockItem.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
-        href: PropTypes.string.isRequired,
+        callback: PropTypes.func.isRequired,
     }).isRequired,
     activeOpt: PropTypes.string.isRequired,
     activeOptChange: PropTypes.func.isRequired,
@@ -47,7 +47,7 @@ DockItem.propTypes = {
 const LiveRoom = function(props) {
     const { } = props;
 
-    const [liveStatus, setLiveStatus] = useState(0);
+    const [liveStatus, setLiveStatus] = useState(-1);
 
     const isLive = () => {
         if (liveStatus === 0) {
@@ -66,17 +66,6 @@ const LiveRoom = function(props) {
                 let statusCode = response.data.live_room.liveStatus;
                 if (statusCode !== liveStatus) {
                     setLiveStatus(statusCode);
-                    if (statusCode === 1) {
-                        toast('爱哥开播啦！', {
-                            icon: '🎉'
-                        })
-                    }
-
-                    if (statusCode === 0) {
-                        toast('爱哥下播啦！', {
-                            icon: '😭'
-                        })
-                    }
                 }
             })
             .catch(err => {
@@ -102,7 +91,11 @@ const LiveRoom = function(props) {
                         borderRadius: '8px',
                         position: 'relative',
                     }}>
-                        <div className={isLive() ? 'status-on' : 'status-off'}></div>
+                        {
+                            liveStatus !== -1 && (
+                                <div className={isLive() ? 'status-on' : 'status-off'}></div>
+                            )
+                        }
                     </div>
                 </div>
             </Tippy>
