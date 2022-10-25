@@ -15,7 +15,7 @@ const DockItem = function(props) {
     const { option, activeOpt, activeOptChange } = props;
 
     const isActive = () => {
-        return option.id === activeOpt;
+        return option === activeOpt;
     };
 
     return (
@@ -38,7 +38,7 @@ DockItem.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
-        callback: PropTypes.func.isRequired,
+        component: PropTypes.node.isRequired,
     }).isRequired,
     activeOpt: PropTypes.string.isRequired,
     activeOptChange: PropTypes.func.isRequired,
@@ -107,14 +107,14 @@ const LiveRoom = function(props) {
 const DockMenu = function(props) {
     const { options } = props;
 
-    const [activeOpt, setActiveOpt] = useState('');
+    const [activeOpt, setActiveOpt] = useState(null);
 
     const activeOptChange = (option) => {
-        if (activeOpt === option.id) {
-            setActiveOpt('');
+        if (activeOpt === option) {
+            setActiveOpt(null);
             return;
         }
-        setActiveOpt(option.id);
+        setActiveOpt(option);
     };
 
     return (
@@ -133,6 +133,11 @@ const DockMenu = function(props) {
             }
             <div className='divider'></div>
             <LiveRoom></LiveRoom>
+            {
+                activeOpt !== null && (
+                    activeOpt.component
+                )
+            }
         </div>
     )
 };
@@ -143,7 +148,7 @@ DockMenu.propTypes = {
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             icon: PropTypes.string.isRequired,
-            callback: PropTypes.func.isRequired,
+            component: PropTypes.node.isRequired,
         })).isRequired,
 }
 
