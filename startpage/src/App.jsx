@@ -6,7 +6,7 @@ import { searchEngines, dockItems } from './config';
 import { Clock } from './components/Clock';
 import { SearchBox } from './components/SearchBox';
 import { DockMenu } from './components/DockMenu';
-import { Overlay } from './components/Overlay';
+import { Schedule } from './components/Schedule';
 
 
 function App() {
@@ -14,9 +14,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Overlay>
-        <p></p>
-      </Overlay> */}
       <Toaster></Toaster>
       <div className='content'>
         <Clock></Clock>

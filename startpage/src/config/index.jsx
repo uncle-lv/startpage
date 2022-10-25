@@ -5,6 +5,7 @@ import googleIcon from '../assets/icon/google.svg';
 import githubIcon from '../assets/icon/github.svg';
 import gitlabIcon from '../assets/icon/gitlab.svg';
 import gmailIcon from '../assets/icon/gmail.svg';
+import { Schedule } from '../components/Schedule';
 
 
 const searchEngines = [
@@ -39,19 +40,19 @@ const dockItems = [
         id: 'github',
         name: 'github',
         icon: githubIcon,
-        callback: (item) => { console.log(item); },
+        component: <Schedule></Schedule>,
     },
     {
         id: 'gitlab',
         name: 'gitlab',
         icon: gitlabIcon,
-        callback: (item) => { console.log(item); },
+        component: null,
     },
     {
         id: 'gmail',
         name: 'gmail',
         icon: gmailIcon,
-        callback: (item) => { console.log(item); },
+        component: null,
     },
 ]
 
