@@ -10,11 +10,15 @@ import { Schedule } from './components/Schedule';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <Toaster></Toaster>
+      <Toaster
+        toastOptions={{
+          className: 'toaster'
+        }}
+      ></Toaster>
       <div className='content'>
         <Clock></Clock>
         <SearchBox options={searchEngines}></SearchBox>
