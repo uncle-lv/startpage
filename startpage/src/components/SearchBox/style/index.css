@@ -19,6 +19,7 @@
 
 .search-box:focus-within {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    scale: 1.005;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 }
