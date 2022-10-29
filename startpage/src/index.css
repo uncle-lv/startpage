@@ -17,6 +17,8 @@
 
 body {
   background-image: url("https://cdn.vuetifyjs.com/images/parallax/material.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 a {
