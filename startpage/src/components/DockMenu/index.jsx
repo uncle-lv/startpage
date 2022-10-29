@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
 import toast from 'react-hot-toast';
-import { spaceInfo } from '../../util/api';
+import { spaceInfo } from '../../config/api';
 import { liveRoomLink } from '../../config/constant';
 import './style/index.css';
 import eggAvatar from '../../assets/icon/egg.svg';
