@@ -1,3 +1,3 @@
 const liveRoomLink = 'https://live.bilibili.com/21712406';
-
-export { liveRoomLink };
+const SpaceLink = 'https://space.bilibili.com/484322035';
+export { liveRoomLink,SpaceLink };
