@@ -1,14 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
-import "tippy.js/animations/shift-away.css";
-import toast from "react-hot-toast";
-import { spaceInfo } from "../../config/api";
-import { liveRoomLink, SpaceLink } from "../../config/constant";
-import "./style/index.css";
-import eggAvatar from "../../assets/icon/egg.svg";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/shift-away.css';
+import toast from 'react-hot-toast';
+import { liveRoomLink } from '../../config/constant';
+import { spaceInfo } from '../../config/api';
+import './style/index.css';
+import eggAvatar from '../../assets/icon/egg.svg';
 
 const DockItem = function (props) {
   const { option, activeOpt, activeOptChange } = props;
@@ -66,22 +66,19 @@ const LiveRoom = function (props) {
     return true;
   };
 
-  const updateLiveStatus = () => {
-    fetch(`/bili/${spaceInfo}`, {
-      method: "GET",
-      mode: "no-cors",
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        let statusCode = response.data.live_room.liveStatus;
-        if (statusCode !== liveStatus) {
-          setLiveStatus(statusCode);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const updateLiveStatus = () => {
+        fetch(`/bili/${spaceInfo}`)
+            .then(response => response.json())
+            .then(response => {
+                let statusCode = response.data.live_room.liveStatus;
+                if (statusCode !== liveStatus) {
+                    setLiveStatus(statusCode);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
   useEffect(() => {
     updateLiveStatus();

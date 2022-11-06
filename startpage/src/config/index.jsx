@@ -1,11 +1,14 @@
-import bingIcon from "../assets/icon/bing.svg";
-import baiduIcon from "../assets/icon/baidu.svg";
-import bilibiliIcon from "../assets/icon/bilibili.svg";
-import googleIcon from "../assets/icon/google.svg";
-import githubIcon from "../assets/icon/github.svg";
-import gitlabIcon from "../assets/icon/gitlab.svg";
-import gmailIcon from "../assets/icon/gmail.svg";
-import { Schedule } from "../components/Schedule";
+import bingIcon from '../assets/icon/bing.svg';
+import baiduIcon from '../assets/icon/baidu.svg';
+import bilibiliIcon from '../assets/icon/bilibili.svg';
+import compassIcon from '../assets/icon/compass.svg';
+import calendarIcon from '../assets/icon/calendar.svg';
+import videoIcon from '../assets/icon/video.svg';
+import googleIcon from '../assets/icon/google.svg';
+import gitlabIcon from '../assets/icon/gitlab.svg';
+import gmailIcon from '../assets/icon/gmail.svg';
+import { Schedule } from '../components/Schedule';
+
 
 const searchEngines = [
   {
@@ -39,24 +42,24 @@ const searchEngines = [
 ];
 
 const dockItems = [
-  {
-    id: "github",
-    name: "github",
-    icon: githubIcon,
-    component: <Schedule></Schedule>,
-  },
-  {
-    id: "gitlab",
-    name: "gitlab",
-    icon: gitlabIcon,
-    component: null,
-  },
-  {
-    id: "gmail",
-    name: "gmail",
-    icon: gmailIcon,
-    component: null,
-  },
-];
+    {
+        id: 'compass',
+        name: '网址导航',
+        icon: compassIcon,
+        component: <Schedule></Schedule>,
+    },
+    {
+        id: 'calendar',
+        name: '日程表',
+        icon: calendarIcon,
+        component: <Schedule></Schedule>,
+    },
+    {
+        id: 'video',
+        name: '最近视频',
+        icon: videoIcon,
+        component: null,
+    },
+]
 
 export { searchEngines, dockItems };

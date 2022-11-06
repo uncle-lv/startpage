@@ -52,7 +52,12 @@ const SearchBox = function (props) {
     })
       .then((response) => response.json())
       .then((response) => {
-        setSuggestResult(response.data);
+        const suggestions = response.data;
+        if (suggestions.length <= 8) {
+          setSuggestResult(suggestions);
+        } else {
+          setSuggestResult(suggestions.slice(0, 8));
+        }
       })
       .catch((err) => {
         console.log(err);
